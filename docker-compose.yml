@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app-server:
+    build: ./
+    entrypoint: ['npm', 'run', 'dev']
+    ports:
+      - '3000:3000'
+    networks:
+      - waypoint-test-app
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
+networks:
+  waypoint-test-app:
+    driver: bridge
